@@ -13,7 +13,7 @@ install:
   - java -jar ./artifacts/app-order.jar &
 
 build_script:
-  - sudo apt-get install chromium-browser
+  - sudo apt-get install chromium-browser -y
   - chromium-browser --version
   - chmod +x gradlew
   - ./gradlew test --info  # запускаем тест, флаг --info позволяет выводить больше информации
