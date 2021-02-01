@@ -23,7 +23,7 @@ public class WedTest {
             return;
         }
         if (nameOS.toLowerCase().contains("linux")) {
-            System.setProperty("webdriver.chrome.driver", "driver/linux/chromedriver.exe");
+            System.setProperty("webdriver.chrome.driver", "driver/linux/chromedriver");
             return;
         }
     }
