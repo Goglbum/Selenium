@@ -32,6 +32,7 @@ public class WedTest {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless");
         driver = new ChromeDriver(options);
+        driver.get("http://localhost:9999");
     }
 
     @AfterEach
@@ -42,7 +43,6 @@ public class WedTest {
 
     @Test
     void webTestOk() {
-        driver.get("http://localhost:9999");
         driver.findElement(By.cssSelector("[type ='text']")).sendKeys("Вася-Ин-Да-Хаус Пупкин");
         driver.findElement(By.cssSelector("[type ='tel']")).sendKeys("+77777777777");
         driver.findElement(By.cssSelector("[class = 'checkbox__box']")).click();
@@ -54,7 +54,6 @@ public class WedTest {
 
     @Test
     void webTestFailedName() {
-        driver.get("http://localhost:9999");
         driver.findElement(By.cssSelector("[type ='text']")).sendKeys("Вася-In-Da-House Пупкин");
         driver.findElement(By.cssSelector("[type ='tel']")).sendKeys("+77777777777");
         driver.findElement(By.cssSelector("[class = 'checkbox__box']")).click();
@@ -66,7 +65,6 @@ public class WedTest {
 
     @Test
     void webTestFailedTel() {
-        driver.get("http://localhost:9999");
         driver.findElement(By.cssSelector("[type ='text']")).sendKeys("Вася-Ин-Да-Хаус Пупкин");
         driver.findElement(By.cssSelector("[type ='tel']")).sendKeys("+9");
         driver.findElement(By.cssSelector("[class = 'checkbox__box']")).click();
@@ -77,8 +75,7 @@ public class WedTest {
     }
 
     @Test
-    void webTestFailedcheckbox() {
-        driver.get("http://localhost:9999");
+    void webTestFailedCheckbox() {
         driver.findElement(By.cssSelector("[type ='text']")).sendKeys("Вася-Ин-Да-Хаус Пупкин");
         driver.findElement(By.cssSelector("[type ='tel']")).sendKeys("+99999999999");
         driver.findElement(By.cssSelector("button")).click();
