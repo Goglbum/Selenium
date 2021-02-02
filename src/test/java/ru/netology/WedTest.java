@@ -64,6 +64,16 @@ public class WedTest {
     }
 
     @Test
+    void webTestFailedNameNull() {
+        driver.findElement(By.cssSelector("[type ='tel']")).sendKeys("+77777777777");
+        driver.findElement(By.cssSelector("[class = 'checkbox__box']")).click();
+        driver.findElement(By.cssSelector("button")).click();
+        String actualMessage = driver.findElement(By.cssSelector("[data-test-id = 'name'] [class = 'input__sub']")).getText();
+        String expected = "Поле обязательно для заполнения";
+        assertEquals(expected,actualMessage.trim());
+    }
+
+    @Test
     void webTestFailedTel() {
         driver.findElement(By.cssSelector("[type ='text']")).sendKeys("Вася-Ин-Да-Хаус Пупкин");
         driver.findElement(By.cssSelector("[type ='tel']")).sendKeys("+9");
@@ -75,12 +85,22 @@ public class WedTest {
     }
 
     @Test
+    void webTestFailedTelNull() {
+        driver.findElement(By.cssSelector("[type ='text']")).sendKeys("Вася-Ин-Да-Хаус Пупкин");
+        driver.findElement(By.cssSelector("[class = 'checkbox__box']")).click();
+        driver.findElement(By.cssSelector("button")).click();
+        String actualMessage = driver.findElement(By.cssSelector("[data-test-id = 'phone'] [class = 'input__sub']")).getText();
+        String expected = "Поле обязательно для заполнения";
+        assertEquals(expected,actualMessage.trim());
+    }
+
+    @Test
     void webTestFailedCheckbox() {
         driver.findElement(By.cssSelector("[type ='text']")).sendKeys("Вася-Ин-Да-Хаус Пупкин");
         driver.findElement(By.cssSelector("[type ='tel']")).sendKeys("+99999999999");
         driver.findElement(By.cssSelector("button")).click();
-        String actual = driver.findElement(By.cssSelector("[class = 'checkbox__text']")).getCssValue("Color");
-        String expected = "rgb(255, 92, 92)";
+        String actual = driver.findElement(By.cssSelector("label.input_invalid [class = 'checkbox__text']")).getText();
+        String expected = "Я соглашаюсь с условиями обработки и использования моих персональных данных и разрешаю сделать запрос в бюро кредитных историй";
         assertEquals(expected,actual);
     }
 }
